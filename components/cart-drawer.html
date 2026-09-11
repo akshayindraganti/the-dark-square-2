@@ -1,0 +1,21 @@
+<div class="drawer" id="cart-drawer" role="dialog" aria-label="Your squares" hidden>
+  <button class="overlay__scrim" type="button" data-cart-close aria-label="Close cart"></button>
+  <div class="drawer__panel">
+    <div class="drawer__head">
+      <p class="drawer__title">Your Squares</p>
+      <button class="icon-button" type="button" data-cart-close>Close</button>
+    </div>
+    <div class="drawer__body" data-cart-body></div>
+    <div class="drawer__foot" data-cart-foot hidden>
+      <div class="cart-total">
+        <span>Subtotal</span>
+        <span data-cart-subtotal>₹0</span>
+      </div>
+      <div class="cart-total cart-total--muted">
+        <span>Shipping</span>
+        <span data-cart-shipping>₹90</span>
+      </div>
+      <button class="btn btn--solid btn--block" type="button">Checkout</button>
+    </div>
+  </div>
+</div>

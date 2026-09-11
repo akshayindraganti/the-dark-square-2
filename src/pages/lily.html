@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include components/head.html -->
+    <title>Lily &amp; Leo · The Dark Square</title>
+    <meta
+      name="description"
+      content="Meet Lily and Leo — curious, playful, chocolate-loving, and full of questions."
+    />
+  </head>
+  <body>
+    <!-- @include components/header.html -->
+
+    <main>
+      <div class="lily__switch">
+        <span class="lily__switch-label">Story treatment</span>
+        <button class="chip is-active" type="button" data-treatment="a">
+          Storybook Spread
+        </button>
+        <button class="chip" type="button" data-treatment="b">
+          Midnight Kitchen
+        </button>
+      </div>
+
+      <!-- Variation A — The Storybook Spread -->
+      <div class="lily-a" data-variant="a">
+        <section class="lily-a__intro">
+          <p class="lily-a__kicker">Where every chocolate becomes an adventure</p>
+          <h1 class="lily-a__title">Welcome to Lily &amp; Leo's world</h1>
+          <p class="lily-a__lede">
+            Meet Lily and Leo. They are curious. They are playful. They love
+            chocolate. And they have a LOT of questions.
+          </p>
+        </section>
+
+        <div data-lily-spreads></div>
+
+        <section class="lily-a__questions">
+          <div class="lily-a__question-list" data-lily-questions></div>
+          <p class="lily-a__last">And most importantly… who ate the last square?</p>
+        </section>
+
+        <section class="lily-a__cta">
+          <p class="lily-a__soon">Coming soon</p>
+          <p class="lily-a__soon-title">Lily &amp; Leo's Chocolate Adventures</p>
+          <p class="lily-a__soon-body">
+            Stories · Games · Chocolate facts · Little surprises
+          </p>
+          <a class="lily-a__button" href="./pages/shop.html">Find your square</a>
+        </section>
+      </div>
+
+      <!-- Variation B — The Midnight Kitchen -->
+      <div class="lily-b" data-variant="b" hidden>
+        <section class="lily-b__hero">
+          <div>
+            <p class="lily-b__kicker">Where every chocolate becomes an adventure</p>
+            <h1 class="lily-b__title">Lily &amp; Leo</h1>
+            <p class="lily-b__lede">
+              They are curious. They are playful. They love chocolate. And they
+              have a LOT of questions.
+            </p>
+          </div>
+          <picture>
+            <source srcset="./assets/lilyleo-scene.avif" type="image/avif" />
+            <source srcset="./assets/lilyleo-scene.webp" type="image/webp" />
+            <img
+              class="lily-b__hero-image"
+              src="./assets/lilyleo-scene.jpg"
+              alt="Lily and Leo in chef's hats and aprons beside the The Dark Square emblem, surrounded by cocoa pods and chocolate"
+            />
+          </picture>
+        </section>
+
+        <section class="lily-b__beats-section">
+          <p class="lily-b__body">
+            Lily &amp; Leo discover the world of The Dark Square one flavour at a
+            time. Every adventure introduces them to a new chocolate, a new story
+            and sometimes a little bit of chocolate-covered mischief.
+          </p>
+          <div class="lily-b__beats" data-lily-beats></div>
+        </section>
+
+        <section class="lily-b__cta">
+          <div class="lily-b__cta-inner">
+            <p class="lily-b__rule">
+              Their favourite rule? There are no rules when it comes to choosing
+              your favourite square.
+            </p>
+            <p class="lily-b__soon">
+              Coming soon · Stories · Games · Chocolate facts
+            </p>
+            <a class="btn-filled" href="./pages/shop.html">Find your square</a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- @include components/footer.html -->
+    <!-- @include components/cart-drawer.html -->
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/pages/lily.js"></script>
+  </body>
+</html>

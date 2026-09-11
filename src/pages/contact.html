@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include components/head.html -->
+    <title>Contact · The Dark Square</title>
+    <meta
+      name="description"
+      content="Questions, gifting orders or something special in the works — get in touch with The Dark Square."
+    />
+  </head>
+  <body>
+    <!-- @include components/header.html -->
+
+    <main class="contact">
+      <div>
+        <p class="page-kicker">Contact</p>
+        <h1 class="contact__title">Let's talk chocolate.</h1>
+        <p class="contact__body">
+          Have a question? Want to place a gifting order? Planning something
+          special? Or simply want to say hello?
+        </p>
+        <p class="contact__note">We'd love to hear from you.</p>
+
+        <div class="contact__rows" data-contact-rows></div>
+      </div>
+
+      <div class="contact__panel">
+        <div class="contact__sent" data-contact-sent hidden>
+          <picture>
+            <source srcset="./assets/lily-new.avif" type="image/avif" />
+            <source srcset="./assets/lily-new.webp" type="image/webp" />
+            <img
+              class="contact__sent-avatar"
+              src="./assets/lily-new.png"
+              alt="Lily reading aloud from a glowing book"
+            />
+          </picture>
+          <p class="contact__sent-title">Message received.</p>
+          <p class="contact__sent-body">
+            We'll write back soon — a person replies, not a bot.
+          </p>
+        </div>
+
+        <form class="contact__form" data-contact-form>
+          <div data-contact-fields></div>
+          <label class="field">
+            <span class="field__label">Message</span>
+            <textarea
+              class="field__input field__input--area"
+              name="message"
+              rows="5"
+              placeholder="Tell us what you're planning."
+            ></textarea>
+          </label>
+          <button class="contact__send" type="submit">Send message</button>
+        </form>
+      </div>
+    </main>
+
+    <!-- @include components/footer.html -->
+    <!-- @include components/cart-drawer.html -->
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/pages/contact.js"></script>
+  </body>
+</html>

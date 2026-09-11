@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include components/head.html -->
+    <title>Find Your Square · The Dark Square</title>
+    <meta
+      name="description"
+      content="Nine small-batch dark chocolate bars with whole nuts — browse by collection and occasion."
+    />
+  </head>
+  <body>
+    <!-- @include components/header.html -->
+
+    <main class="page">
+      <p class="page-kicker">The collection</p>
+      <h1 class="shop__title" data-shop-title>Find Your Square</h1>
+      <p class="shop__blurb" data-shop-blurb>
+        Some days call for something bold. Some days need a little sweetness. And
+        some days simply need chocolate. Explore the collection and find the
+        square that feels like you.
+      </p>
+
+      <div class="shop__layout">
+        <aside class="shop__aside">
+          <p class="shop__filter-heading">Collection</p>
+          <div class="shop__collections" data-collection-filters></div>
+
+          <p class="shop__filter-heading">Occasion</p>
+          <div class="shop__occasions" data-occasion-filters></div>
+        </aside>
+
+        <div class="shop__results">
+          <p class="shop__count" data-result-count></p>
+          <div class="shop__grid" data-product-grid></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- @include components/footer.html -->
+    <!-- @include components/cart-drawer.html -->
+    <!-- @include components/quick-view.html -->
+
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/pages/shop.js"></script>
+  </body>
+</html>
