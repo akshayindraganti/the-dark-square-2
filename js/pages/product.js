@@ -5,7 +5,7 @@
  * falls back to the first product, matching the original's `|| PRODUCTS[0]`.
  */
 
-import { $, $$, el, render, ready } from "../modules/dom.js";
+import { $, $$, el, render, ready, setBackground } from "../modules/dom.js";
 import { PRODUCTS, findProduct } from "../modules/products.js";
 import { money, productTile } from "../modules/format.js";
 import { productHref, param } from "../modules/router.js";
@@ -41,7 +41,7 @@ ready(() => {
     node.textContent = product[node.dataset.pdp];
   }
 
-  hero.style.background = productTile(product);
+  setBackground(hero, productTile(product));
 
   render(
     $("[data-pdp-notes]"),

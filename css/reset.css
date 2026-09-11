@@ -52,6 +52,14 @@ button {
   font-family: inherit;
 }
 
+/* The original built its buttons and chips as <span>s, so they inherited the
+   body's 1.7 line-height. A real <button> gets `normal` from the UA sheet,
+   which makes every converted control a few pixels shorter. Text inputs keep
+   the UA default, which is what they had before too. */
+button {
+  line-height: inherit;
+}
+
 ::selection {
   background: var(--metal);
   color: var(--bg);

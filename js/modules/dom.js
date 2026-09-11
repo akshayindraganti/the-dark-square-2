@@ -46,6 +46,19 @@ export function esc(str) {
   );
 }
 
+/**
+ * Apply a background shorthand produced by bgImage()/productTile().
+ *
+ * Those return several declarations separated by ";" (the plain url() plus the
+ * image-set overrides). A style *attribute* parses that happily, but
+ * `el.style.background = ...` is a single-property setter and silently drops
+ * the whole string — which is why this goes through cssText.
+ */
+export function setBackground(el, shorthand) {
+  if (!el) return;
+  el.style.cssText += `;background: ${shorthand};`;
+}
+
 /** Run a callback once the DOM is parsed. */
 export function ready(fn) {
   if (document.readyState === "loading") {

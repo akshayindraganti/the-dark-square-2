@@ -6,7 +6,7 @@
  * Page-specific behaviour lives in js/pages/*.js.
  */
 
-import { $, $$, el, render, ready } from "./modules/dom.js";
+import { $, $$, el, render, ready, setBackground } from "./modules/dom.js";
 import { currentPage, href } from "./modules/router.js";
 import { COUPON } from "./modules/products.js";
 import { bgImage } from "./modules/format.js";
@@ -160,7 +160,7 @@ function initCoupon() {
   }
 
   const art = $("[data-coupon-art]", modal);
-  if (art) art.style.background = bgImage(COUPON.art, "center");
+  setBackground(art, bgImage(COUPON.art, "center"));
 
   const shop = $("[data-coupon-shop]", modal);
   if (shop) shop.href = href("shop");

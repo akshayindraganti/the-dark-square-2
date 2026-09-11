@@ -2,6 +2,11 @@
    Shop — filters and the product grid.
    ========================================================================== */
 
+/* The shop caps its vertical padding 8px tighter than the other pages. */
+.page--shop {
+  padding: clamp(32px, 5vw, 64px) clamp(16px, 4vw, 40px);
+}
+
 .shop__title {
   font-family: var(--font-display);
   font-weight: 400;

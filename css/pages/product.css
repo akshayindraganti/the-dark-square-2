@@ -109,7 +109,7 @@
 
 .pdp__note-value {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 17px;
   margin: 0;
   color: var(--ink);
 }
@@ -147,7 +147,9 @@
 
 .pdp__pack-note {
   margin: 0;
-  color: var(--ink-70);
+  font-size: 14px;
+  color: rgba(247, 239, 230, 0.72);
+  text-wrap: pretty;
 }
 
 /* ---- Sticky buy bar --------------------------------------------------- */
@@ -278,5 +280,11 @@
   .pdp__media {
     position: static;
     padding: clamp(16px, 4vw, 28px);
+    /* The original had a three-up thumbnail strip below the hero here. It was
+       driven by a `productShots` list that was never defined, so it always
+       rendered empty — but its 10px top margin still occupied space, and the
+       columns stack at this width. Kept as real spacing so the page matches;
+       delete this line if the tighter gap is preferred. */
+    padding-bottom: calc(clamp(16px, 4vw, 28px) + 10px);
   }
 }

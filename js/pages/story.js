@@ -5,13 +5,13 @@
  * was a computed `order` style, here it is an `is-flipped` modifier.
  */
 
-import { $, el, render, ready } from "../modules/dom.js";
+import { $, el, render, ready, setBackground } from "../modules/dom.js";
 import { STORY_BLOCKS } from "../modules/products.js";
 import { bgImage } from "../modules/format.js";
 
 ready(() => {
   const hero = $("[data-story-hero]");
-  if (hero) hero.style.background = bgImage("assets/story/story-hero.jpg", "center");
+  setBackground(hero, bgImage("assets/story/story-hero.jpg", "center"));
 
   const blocks = $("[data-story-blocks]");
   if (!blocks) return;
