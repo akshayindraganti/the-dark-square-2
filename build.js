@@ -19,8 +19,8 @@
  * output.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync, cpSync } from "node:fs";
+import { dirname, join, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildSync } from "esbuild";
 
@@ -98,6 +98,32 @@ function rebase(html, depthFromRoot) {
   );
 }
 
+/**
+ * Assemble dist/ — exactly what a host should serve, and nothing else.
+ *
+ * The build writes into the project root so the site can also be opened
+ * straight from disk, but that root also holds the authored sources, the
+ * build script and the unbundled modules. None of those belong on a public
+ * server, so deployment copies out only the files the browser actually asks
+ * for. assets/raw/ (the untracked video masters) is excluded too.
+ */
+function dist() {
+  const OUT = join(ROOT, "dist");
+  rmSync(OUT, { recursive: true, force: true });
+  mkdirSync(OUT, { recursive: true });
+
+  const copy = (rel, filter) =>
+    cpSync(join(ROOT, rel), join(OUT, rel), { recursive: true, filter });
+
+  copy("index.html");
+  copy("pages");
+  copy("css");
+  copy("js/build");
+  copy("assets", (src) => !src.includes(`${sep}assets${sep}raw`));
+
+  console.log(`\nAssembled dist/ — deploy that directory.`);
+}
+
 function build() {
   const files = readdirSync(SRC).filter((f) => f.endsWith(".html"));
   if (!files.length) throw new Error("no pages found in src/pages/");
@@ -130,6 +156,7 @@ function build() {
 
 try {
   build();
+  if (process.argv.includes("--dist")) dist();
 } catch (err) {
   console.error(`\nBuild failed: ${err.message}\n`);
   process.exit(1);
