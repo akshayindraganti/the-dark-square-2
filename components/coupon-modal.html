@@ -1,0 +1,35 @@
+<div class="overlay coupon" id="coupon-modal" hidden>
+  <button class="overlay__scrim" type="button" data-coupon-close aria-label="Close offer"></button>
+  <div class="coupon__panel" role="dialog" aria-modal="true" aria-label="Welcome offer">
+    <button class="coupon__close" type="button" data-coupon-close aria-label="Close">&times;</button>
+
+    <div class="coupon__copy">
+      <p class="coupon__brand" data-coupon="brand"></p>
+      <p class="coupon__brand-sub" data-coupon="brandSub"></p>
+      <p class="coupon__headline" data-coupon="headline"></p>
+      <p class="coupon__enjoy" data-coupon="enjoy"></p>
+      <p class="coupon__offer" data-coupon="offer"></p>
+      <p class="coupon__offer-sub" data-coupon="offerSub"></p>
+
+      <button class="coupon__code" type="button" data-coupon-copy>
+        <span data-coupon="codeLabel"></span>
+        <b data-coupon="code"></b>
+      </button>
+      <p class="coupon__hint" data-coupon-hint>Tap the code to copy</p>
+
+      <a class="coupon__cta" href="./pages/shop.html" data-coupon-shop>
+        <span data-coupon="cta"></span> <span class="coupon__arrow">&#8594;</span>
+      </a>
+
+      <p class="coupon__tagline" data-coupon="tagline"></p>
+      <p class="coupon__terms" data-coupon="terms"></p>
+    </div>
+
+    <div
+      class="coupon__art"
+      data-coupon-art
+      role="img"
+      aria-label="Lily and Leo peeking out of a dark chocolate gift box"
+    ></div>
+  </div>
+</div>

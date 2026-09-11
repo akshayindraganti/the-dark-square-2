@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include components/head.html -->
+    <title>The Dark Square · Artisan Chocolates</title>
+    <meta
+      name="description"
+      content="Small-batch dark chocolate made in India. Every square is built around one idea and one ingredient worth waiting for."
+    />
+  </head>
+  <body>
+    <!-- @include components/loader.html -->
+    <!-- @include components/header.html -->
+
+    <main>
+      <!-- ── Hero ────────────────────────────────────────────────── -->
+      <section class="hero">
+        <div class="hero-splash-layer" aria-hidden="true">
+          <video
+            class="hero-splash-video"
+            data-hero-video
+            autoplay
+            muted
+            loop
+            playsinline
+            webkit-playsinline
+            preload="auto"
+          ></video>
+          <div class="hero__scrim"></div>
+        </div>
+
+        <div class="hero-copy">
+          <p class="hero__eyebrow">Small-batch · Made in India</p>
+          <h1 class="hero__title">
+            Every square<br /><span class="hero__title-em">holds a story.</span>
+          </h1>
+          <p class="hero__body">
+            Each square is built around one idea and one ingredient worth waiting
+            for. Prepared in small batches, tempered by hand, wrapped to be
+            opened slowly.
+          </p>
+          <div class="hero__actions">
+            <a class="hero__cta" href="./pages/shop.html">Explore the Collection</a>
+            <a class="hero__link" href="./pages/story.html"
+              >Our Story <span class="hero__arrow">→</span></a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ── A little square ─────────────────────────────────────── -->
+      <section class="pitch">
+        <div class="pitch__inner">
+          <h2 class="pitch__title">
+            A little square.<br /><span class="pitch__title-em">A lot of story.</span>
+          </h2>
+          <p class="pitch__body">
+            Chocolate has a way of making ordinary moments feel special. At The
+            Dark Square, we create handcrafted chocolates with thoughtfully
+            chosen flavours, beautiful textures and a touch of imagination.
+          </p>
+          <p class="pitch__note">
+            Because sometimes, happiness comes in a small square.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── Meet the Squares ────────────────────────────────────── -->
+      <section class="collections">
+        <div class="collections__head">
+          <div>
+            <h2 class="collections__title">Meet the Squares</h2>
+            <p class="collections__body">
+              Every chocolate has its own personality. Some are bold. Some are
+              playful. Some are comforting. And some are impossible to stop at
+              just one.
+            </p>
+          </div>
+          <a class="collections__all" href="./pages/shop.html">View all chocolates</a>
+        </div>
+        <div class="collections__grid" data-collections></div>
+      </section>
+
+      <!-- ── Lily & Leo ──────────────────────────────────────────── -->
+      <section class="lily-teaser">
+        <div class="lily-teaser__inner">
+          <picture>
+            <source srcset="./assets/lilyleo-scene.avif" type="image/avif" />
+            <source srcset="./assets/lilyleo-scene.webp" type="image/webp" />
+            <img
+              class="lily-teaser__image"
+              src="./assets/lilyleo-scene.jpg"
+              alt="Lily reading aloud from a glowing book while Leo listens, cocoa farms and a globe drawn in light above them"
+            />
+          </picture>
+          <div>
+            <p class="lily-teaser__kicker">Meet Lily &amp; Leo</p>
+            <h2 class="lily-teaser__title">Two curious little chocolate lovers</h2>
+            <p class="lily-teaser__body">
+              One big sweet tooth. And plenty of chocolate adventures waiting to
+              happen.
+            </p>
+            <p class="lily-teaser__body lily-teaser__body--last">
+              Lily &amp; Leo are the little characters behind The Dark Square —
+              discovering flavours, sharing stories and getting into just enough
+              chocolate trouble along the way.
+            </p>
+            <a class="underline-link" href="./pages/lily.html">Enter their world</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Gifting / Story panels ──────────────────────────────── -->
+      <section class="panels">
+        <div class="panels__grid">
+          <div class="panel">
+            <p class="panel__kicker">Gifting</p>
+            <h3 class="panel__title">Give a little happiness</h3>
+            <p class="panel__body">
+              Some gifts are opened. Some gifts are remembered. Ours are made for
+              both.
+            </p>
+            <a class="panel__cta" href="./pages/gifting.html">Discover gifting</a>
+          </div>
+
+          <div class="panel">
+            <p class="panel__kicker">Our story</p>
+            <h3 class="panel__title">Some stories deserve a second chapter</h3>
+            <p class="panel__body">
+              The Dark Square was born from a love for chocolate that never really
+              went away. There was a pause — a long one. But some passions don’t
+              disappear. They wait.
+            </p>
+            <a class="panel__cta panel__cta--strong" href="./pages/story.html"
+              >Read our story</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Made for moments ────────────────────────────────────── -->
+      <section class="moments">
+        <div class="moments__inner">
+          <div>
+            <h2 class="moments__title">Made for moments.</h2>
+            <p class="moments__body">We believe every square deserves a moment.</p>
+          </div>
+          <div class="moments__list" data-moments></div>
+        </div>
+      </section>
+
+      <!-- ── Newsletter ──────────────────────────────────────────── -->
+      <section class="signup-band">
+        <div class="signup-band__inner">
+          <div>
+            <h2 class="signup-band__title">Something delicious is coming.</h2>
+            <p class="signup-band__body">
+              Be the first to discover new flavours, chocolate stories, special
+              collections and little surprises from The Dark Square.
+            </p>
+          </div>
+          <form class="signup-band__form" data-signup>
+            <label class="visually-hidden" for="home-email">Your email address</label>
+            <input
+              class="signup-band__input"
+              id="home-email"
+              name="email"
+              type="email"
+              placeholder="Your email address"
+            />
+            <button class="signup-band__button" type="submit">
+              Join the chocolate list
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ── Sign-off ────────────────────────────────────────────── -->
+      <section class="signoff">
+        <div class="signoff__inner">
+          <p class="signoff__text">
+            Take a square.<br />Make a moment.<br /><span class="signoff__em"
+              >Tell a story.</span
+            >
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include components/footer.html -->
+    <!-- @include components/cart-drawer.html -->
+    <!-- @include components/coupon-modal.html -->
+
+    <!-- @script home -->
+  </body>
+</html>

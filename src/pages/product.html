@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- @include components/head.html -->
+    <title>Chocolate · The Dark Square</title>
+    <meta name="description" content="A single square, and the story behind it." />
+  </head>
+  <body>
+    <!-- @include components/header.html -->
+
+    <main>
+      <div class="pdp">
+        <div class="pdp__media">
+          <div class="pdp__hero" data-pdp-hero></div>
+        </div>
+
+        <div class="pdp__body">
+          <p class="pdp__crumbs">
+            <a href="./pages/shop.html">Shop</a>
+            / <span data-pdp="collection"></span>
+          </p>
+          <h1 class="pdp__name" data-pdp="name"></h1>
+          <p class="pdp__meta" data-pdp="pair"></p>
+          <p class="pdp__line" data-pdp="line"></p>
+          <p class="pdp__story" data-pdp="story"></p>
+          <p class="pdp__story2" data-pdp="story2"></p>
+
+          <div class="pdp__notes" data-pdp-notes></div>
+
+          <div class="pdp__pack">
+            <div class="pdp__pack-inner">
+              <picture>
+                <source srcset="./assets/leo-new.avif" type="image/avif" />
+                <source srcset="./assets/leo-new.webp" type="image/webp" />
+                <img
+                  class="pdp__pack-avatar"
+                  src="./assets/leo-new.png"
+                  alt="Leo resting his chin on his hands, daydreaming"
+                />
+              </picture>
+              <div>
+                <p class="pdp__pack-title">From the back of the pack</p>
+                <p class="pdp__pack-note" data-pdp="leoNote"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="buybar">
+            <div class="buybar__inner">
+              <div class="buybar__sizes">
+                <p class="buybar__label">Size</p>
+                <div class="buybar__chips" data-pdp-sizes></div>
+              </div>
+              <div class="buybar__price">
+                <p class="buybar__label">Price</p>
+                <p class="buybar__amount" data-pdp-price></p>
+              </div>
+              <button class="buybar__add" type="button" data-pdp-add>
+                Add to my squares
+              </button>
+            </div>
+            <p class="buybar__ship">
+              Ships across India in 3–5 days · Cool-chain packing included
+            </p>
+          </div>
+
+          <div class="pdp__related">
+            <h2 class="pdp__related-title">
+              Others from <span data-pdp="collection"></span>
+            </h2>
+            <div class="pdp__related-grid" data-pdp-related></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- @include components/footer.html -->
+    <!-- @include components/cart-drawer.html -->
+
+    <!-- @script product -->
+  </body>
+</html>
