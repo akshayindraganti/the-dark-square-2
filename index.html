@@ -3471,8 +3471,29 @@
               >
                 <span
                   onClick="{{ closeCoupon }}"
-                  style="position: absolute; top: 10px; right: 12px; z-index: 3; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #6B4430"
-                  style-hover="color: #2E1A10"
+                  style="
+                    position: absolute;
+                    top: 14px;
+                    right: 14px;
+                    z-index: 3;
+                    cursor: pointer;
+                    width: 52px;
+                    height: 52px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 32px;
+                    font-weight: 300;
+                    line-height: 1;
+                    color: #fbf3e8;
+                    background: #3f2415;
+                    border: 2px solid rgba(251, 243, 232, 0.9);
+                    border-radius: 50%;
+                    box-shadow: 0 4px 18px rgba(24, 12, 6, 0.55),
+                      0 0 0 4px rgba(251, 243, 232, 0.35);
+                    transition: background 0.18s ease, transform 0.18s ease;
+                  "
+                  style-hover="background: #8B4A2B; transform: scale(1.06)"
                   role="button"
                   aria-label="Close"
                   >&times;</span
@@ -3551,26 +3572,30 @@
                 <span
                   onClick="{{ closeQuick }}"
                   style="
-                    position: absolute;
-                    top: 12px;
-                    right: 14px;
+                    position: sticky;
+                    top: 14px;
+                    float: right;
+                    margin: 14px 14px 0 0;
                     z-index: 2;
                     cursor: pointer;
-                    width: 40px;
-                    height: 40px;
+                    width: 52px;
+                    height: 52px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    font-size: 18px;
+                    font-size: 32px;
+                    font-weight: 300;
+                    line-height: 1;
                     color: var(--ink, #f7efe6);
-                    background: color-mix(
-                      in srgb,
-                      var(--bg, #180d09) 60%,
-                      transparent
-                    );
+                    background: #180d09;
+                    border: 2px solid var(--metal, #d6b98c);
                     border-radius: 50%;
+                    box-shadow: 0 4px 18px rgba(4, 2, 1, 0.7),
+                      0 0 0 4px rgba(24, 13, 9, 0.55);
+                    transition: background 0.18s ease, color 0.18s ease,
+                      transform 0.18s ease;
                   "
-                  style-hover="color: var(--metal,#D6B98C)"
+                  style-hover="background: var(--metal,#D6B98C); color: #180D09; transform: scale(1.06)"
                   role="button"
                   aria-label="Close"
                   >×</span
