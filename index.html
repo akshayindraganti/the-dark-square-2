@@ -106,7 +106,7 @@
       <div class="hero-copy" style="width: min(760px, 100%); text-align: center; padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 52px); border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 30%, transparent); background: color-mix(in srgb, var(--bg,#180D09) 30%, transparent); backdrop-filter: blur(3px); animation: fadeUp .9s ease-out both">
         <p style="font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: rgba(247,239,230,.78); margin: 0 0 22px; text-shadow: 0 2px 18px rgba(12,6,4,.95)">Small-batch · Made in India</p>
         <h1 style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(40px, 7vw, 82px); line-height: 1.04; margin: 0; color: var(--ink,#F7EFE6); text-wrap: balance; text-shadow: 0 3px 30px rgba(12,6,4,.95), 0 1px 4px rgba(12,6,4,.85)">Every square<br><span style="font-style: italic; color: var(--metal,#D6B98C)">holds a story.</span></h1>
-        <p style="max-width: 54ch; margin: 26px auto 36px; font-size: clamp(15px, 1.3vw, 17px); color: rgba(247,239,230,.86); text-wrap: pretty; text-shadow: 0 2px 18px rgba(12,6,4,.95), 0 1px 3px rgba(12,6,4,.8)">Ten dark chocolate bars, each built around one idea and one ingredient worth waiting for. Roasted in small batches, tempered by hand, wrapped to be opened slowly.</p>
+        <p style="max-width: 54ch; margin: 26px auto 36px; font-size: clamp(15px, 1.3vw, 17px); color: rgba(247,239,230,.86); text-wrap: pretty; text-shadow: 0 2px 18px rgba(12,6,4,.95), 0 1px 3px rgba(12,6,4,.8)">Each square is built around one idea and one ingredient worth waiting for. Prepared in small batches, tempered by hand, wrapped to be opened slowly.</p>
         <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; align-items: center">
           <span onClick="{{ goShop }}" style="cursor: pointer; background: var(--metal,#D6B98C); color: var(--bg,#180D09); padding: 16px 32px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; border-radius: 999px; display: inline-flex; align-items: center; min-height: 48px" style-hover="background: var(--ink,#F7EFE6)">Explore the Collection</span>
           <span onClick="{{ goStory }}" style="cursor: pointer; color: var(--ink,#F7EFE6); padding: 16px 26px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 700; border-radius: 999px; display: inline-flex; align-items: center; gap: 10px; min-height: 48px; text-shadow: 0 2px 16px rgba(12,6,4,.9)" style-hover="color: var(--metal,#D6B98C)">Our Story <span style="font-size: 14px">→</span></span>
@@ -237,7 +237,10 @@
         <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: clamp(16px, 2vw, 26px)">
           <sc-for list="{{ shopProducts }}" as="p" hint-placeholder-count="6">
             <div style="border-bottom: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 12%, transparent); padding-bottom: 20px">
-              <div onClick="{{ p.go }}" style="{{ p.tile }}" style-hover="border-color: color-mix(in srgb, var(--metal,#D6B98C) 45%, transparent)"></div>
+              <div style="position: relative; margin-bottom: 16px">
+                <div onClick="{{ p.go }}" style="{{ p.tile }}; margin-bottom: 0" style-hover="border-color: color-mix(in srgb, var(--metal,#D6B98C) 45%, transparent)"></div>
+                <span onClick="{{ p.quick }}" style="position: absolute; left: 10px; right: 10px; bottom: 10px; cursor: pointer; background: color-mix(in srgb, var(--bg,#180D09) 72%, transparent); backdrop-filter: blur(4px); border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 34%, transparent); color: var(--metal,#D6B98C); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; min-height: 40px; display: flex; align-items: center; justify-content: center" style-hover="background: var(--metal,#D6B98C); color: var(--bg,#180D09)">Quick view</span>
+              </div>
               <p onClick="{{ p.go }}" style="cursor: pointer; font-family: 'Playfair Display', serif; font-size: 19px; margin: 0 0 6px; color: var(--ink,#F7EFE6)">{{ p.name }}</p>
               <p style="margin: 0 0 14px; font-size: 13px; color: rgba(247,239,230,.58)">{{ p.pair }}</p>
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap">
@@ -583,6 +586,68 @@
     </div>
   </footer>
 
+  <!-- ═══════════════ WELCOME COUPON POPUP ═══════════════ -->
+  <sc-if value="{{ couponOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position: fixed; inset: 0; z-index: 80; display: flex; align-items: center; justify-content: center; padding: clamp(12px, 3vw, 32px)">
+    <div onClick="{{ closeCoupon }}" style="position: absolute; inset: 0; background: rgba(10,5,3,.8); backdrop-filter: blur(3px)"></div>
+    <div role="dialog" aria-modal="true" aria-label="Welcome offer" style="{{ couponPanelStyle }}">
+      <span onClick="{{ closeCoupon }}" style="position: absolute; top: 10px; right: 12px; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: rgba(247,239,230,.7)" style-hover="color: var(--metal,#D6B98C)" role="button" aria-label="Close">×</span>
+
+      <p style="font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--metal2,#D49B84); margin: 0 0 18px">{{ couponEyebrow }}</p>
+      <p style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(26px, 4vw, 38px); line-height: 1.15; margin: 0 0 16px; color: var(--ink,#F7EFE6)">{{ couponHeadline }}<br><span style="font-style: italic; color: var(--metal,#D6B98C)">{{ couponHeadlineItalic }}</span></p>
+      <p style="max-width: 44ch; margin: 0 auto 26px; font-size: 14px; color: rgba(247,239,230,.74); text-wrap: pretty">{{ couponBody }}</p>
+
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px">
+        <span style="flex: 1 1 200px; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; border: 1px dashed color-mix(in srgb, var(--metal,#D6B98C) 55%, transparent); background: color-mix(in srgb, var(--metal,#D6B98C) 8%, transparent); font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: .18em; color: var(--metal,#D6B98C)">{{ couponCode }}</span>
+        <span onClick="{{ copyCoupon }}" style="cursor: pointer; min-height: 52px; padding: 0 22px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 40%, transparent); color: var(--metal,#D6B98C); font-size: 10px; letter-spacing: .2em; text-transform: uppercase" style-hover="border-color: var(--metal,#D6B98C); color: var(--ink,#F7EFE6)">{{ couponCopyLabel }}</span>
+      </div>
+
+      <span onClick="{{ couponShop }}" style="cursor: pointer; width: 100%; background: var(--metal,#D6B98C); color: var(--bg,#180D09); font-weight: 700; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; border-radius: 2px" style-hover="background: var(--ink,#F7EFE6)">Shop the collection</span>
+      <p style="margin: 18px 0 0; font-size: 11px; letter-spacing: .04em; color: rgba(247,239,230,.45); text-wrap: pretty">{{ couponTerms }}</p>
+      <span onClick="{{ closeCoupon }}" style="display: inline-block; margin-top: 14px; cursor: pointer; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(247,239,230,.5)" style-hover="color: var(--ink,#F7EFE6)">No thanks</span>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ═══════════════ QUICK VIEW POPUP ═══════════════ -->
+  <sc-if value="{{ quickOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position: fixed; inset: 0; z-index: 70; display: flex; align-items: center; justify-content: center; padding: clamp(12px, 3vw, 32px)">
+    <div onClick="{{ closeQuick }}" style="position: absolute; inset: 0; background: rgba(10,5,3,.78); backdrop-filter: blur(3px)"></div>
+    <div role="dialog" aria-modal="true" style="position: relative; width: min(880px, 100%); max-height: 88vh; overflow-y: auto; background: var(--bg2,#21140F); border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 28%, transparent); animation: fadeUp .3s ease both">
+      <span onClick="{{ closeQuick }}" style="position: absolute; top: 12px; right: 14px; z-index: 2; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--ink,#F7EFE6); background: color-mix(in srgb, var(--bg,#180D09) 60%, transparent); border-radius: 50%" style-hover="color: var(--metal,#D6B98C)" role="button" aria-label="Close">×</span>
+      <div style="{{ quickGridStyle }}">
+        <div style="{{ quickData.media }}"></div>
+        <div style="display: flex; flex-direction: column">
+          <p style="font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: var(--metal2,#D49B84); margin: 0 0 12px">{{ quickData.collection }} · {{ quickData.pctLabel }}</p>
+          <p style="font-family: 'Playfair Display', serif; font-size: clamp(24px, 3vw, 34px); line-height: 1.15; margin: 0 0 10px; color: var(--ink,#F7EFE6)">{{ quickData.name }}</p>
+          <p style="margin: 0 0 18px; font-size: 13px; color: rgba(247,239,230,.58)">{{ quickData.pair }}</p>
+          <p style="margin: 0 0 18px; font-family: Caveat, cursive; font-size: 22px; color: var(--metal2,#D49B84)">{{ quickData.line }}</p>
+          <p style="margin: 0 0 20px; font-size: 14px; color: rgba(247,239,230,.74); text-wrap: pretty">{{ quickData.story }}</p>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px">
+            <sc-for list="{{ quickData.notes }}" as="n" hint-placeholder-count="3">
+              <div style="flex: 1 1 110px; border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 16%, transparent); padding: 10px 12px">
+                <p style="margin: 0 0 4px; font-size: 9px; letter-spacing: .22em; text-transform: uppercase; color: #F3EBDD">{{ n.label }}</p>
+                <p style="margin: 0; font-size: 14px; color: var(--ink,#F7EFE6)">{{ n.value }}</p>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px">
+            <sc-for list="{{ quickData.sizes }}" as="sz" hint-placeholder-count="2">
+              <span onClick="{{ sz.go }}" style="{{ sz.style }}">{{ sz.label }}</span>
+            </sc-for>
+            <span style="margin-left: auto; font-size: 19px; color: var(--metal,#D6B98C)">{{ quickData.price }}</span>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center">
+            <span onClick="{{ quickData.add }}" style="cursor: pointer; flex: 1 1 200px; background: var(--metal,#D6B98C); color: var(--bg,#180D09); font-weight: 700; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; min-height: 50px; display: inline-flex; align-items: center; justify-content: center; border-radius: 2px" style-hover="background: var(--ink,#F7EFE6)">Add to my squares</span>
+            <span onClick="{{ quickData.details }}" style="cursor: pointer; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--metal,#D6B98C); border-bottom: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 40%, transparent); padding-bottom: 4px">Full details</span>
+          </div>
+          <p style="margin: 22px 0 0; padding-top: 16px; border-top: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 14%, transparent); font-family: Caveat, cursive; font-size: 19px; color: rgba(247,239,230,.72)">{{ quickData.leoNote }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
   <!-- ═══════════════ CART DRAWER ═══════════════ -->
   <sc-if value="{{ cartOpen }}" hint-placeholder-val="{{ false }}">
   <div style="position: fixed; inset: 0; z-index: 60; display: flex; justify-content: flex-end">
@@ -716,6 +781,17 @@ const COLS = [
   { name: 'The Celebration Collection', line: 'Rose, pistachio, sea salt. For the days worth marking.' }
 ];
 
+// ── Welcome coupon popup: edit these four lines to change the offer ──
+const COUPON = {
+  delayMs: 6000,                       // appears this long after the loader clears
+  eyebrow: 'A little welcome gift',
+  headline: 'Your first square,',
+  headlineItalic: 'on a sweeter note.',
+  body: 'Take 10% off your first box of handmade squares. Prepared in small batches, tempered by hand, wrapped to be opened slowly.',
+  code: 'FIRSTSQUARE10',
+  terms: 'Valid on your first order · Minimum ₹500 · One use per customer'
+};
+
 const THEMES = {
   copper: {
     label: 'Copper', name: 'Burnished Copper', note: 'Warm · Artisanal · Sophisticated',
@@ -736,7 +812,9 @@ class Component extends DCLogic {
     loading: true, pct: 0, menuOpen: false, vw: (typeof window !== 'undefined' ? window.innerWidth : 1200),
     screen: 'home', slug: 'salted-almond-spell',
     collection: 'All', occasion: 'All',
-    size: 100, cartOpen: false, cart: [], lily: null, contactSent: false
+    size: 100, cartOpen: false, cart: [], lily: null, contactSent: false,
+    quick: null, quickSize: 100,
+    couponOpen: false, couponSeen: false, couponCopied: false
   };
 
   onResize = () => this.setState({ vw: window.innerWidth });
@@ -745,17 +823,33 @@ class Component extends DCLogic {
     this.tick = setInterval(() => {
       this.setState((s) => {
         const next = Math.min(100, s.pct + 4 + Math.random() * 9);
-        if (next >= 100) { clearInterval(this.tick); setTimeout(() => this.setState({ loading: false }), 480); }
+        if (next >= 100) { clearInterval(this.tick); setTimeout(() => { this.setState({ loading: false }); this.armCoupon(); }, 480); }
         return { pct: next };
       });
     }, 90);
   }
   componentWillUnmount() {
-    clearInterval(this.timer); clearInterval(this.tick);
+    clearInterval(this.timer); clearInterval(this.tick); clearTimeout(this.couponTimer);
     window.removeEventListener('resize', this.onResize);
   }
   go = (screen) => () => { this.setState({ screen: screen, cartOpen: false, menuOpen: false }); window.scrollTo(0, 0); };
   openProduct = (slug) => () => { this.setState({ screen: 'product', slug: slug, size: 100, cartOpen: false }); window.scrollTo(0, 0); };
+  openQuick = (slug) => (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({ quick: slug, quickSize: 100 }); };
+  closeQuick = () => this.setState({ quick: null });
+  armCoupon = () => {
+    clearTimeout(this.couponTimer);
+    this.couponTimer = setTimeout(() => this.setState((s) =>
+      (s.couponSeen || s.screen !== 'home') ? null : { couponOpen: true }), COUPON.delayMs);
+  };
+  closeCoupon = () => { clearTimeout(this.couponTimer); this.setState({ couponOpen: false, couponSeen: true }); };
+  copyCoupon = () => {
+    try {
+      if (navigator.clipboard) navigator.clipboard.writeText(COUPON.code).catch(() => {});
+    } catch (e) {}
+    this.setState({ couponCopied: true });
+  };
+  couponShop = () => { this.closeCoupon(); this.go('shop')(); };
+  quickToProduct = (slug) => () => { this.setState({ quick: null }); this.openProduct(slug)(); };
   add = (slug, size) => () => {
     this.setState((s) => {
       const key = slug + '-' + size;
@@ -800,7 +894,7 @@ class Component extends DCLogic {
     const tile = (p, extra) => 'aspect-ratio: 1; border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 16%, transparent); background: ' +
       (p.img ? "url('" + p.img + "') center 20% / cover no-repeat" : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)') + '; ' + (extra || '');
     const card = (p) => ({
-      name: p.name, pair: p.pair, priceLabel: 'from ' + this.money(p.p50),
+      name: p.name, pair: p.pair, priceLabel: 'from ' + this.money(p.p50), quick: this.openQuick(p.slug),
       shot: p.pair, go: this.openProduct(p.slug), add: this.add(p.slug, 100),
       tile: 'cursor: pointer; margin-bottom: 16px; ' + tile(p),
       bg: tile(p)
@@ -939,6 +1033,38 @@ class Component extends DCLogic {
         ? 'Some days call for something bold. Some days need a little sweetness. And some days simply need chocolate. Explore the collection and find the square that feels like you.'
         : (COLS.find((c) => c.name === s.collection) || {}).line,
       resultCount: filtered.length + (filtered.length === 1 ? ' chocolate' : ' chocolates'),
+      quickOpen: !!s.quick,
+      quickData: (() => {
+        const q = PRODUCTS.find((x) => x.slug === s.quick) || PRODUCTS[0];
+        return {
+          name: q.name, collection: q.collection, pair: q.pair, line: q.line,
+          story: q.story, story2: q.story2, leoNote: q.leoNote,
+          pctLabel: q.pct + '% cacao', occasion: q.occasion,
+          notes: [['Cocoa', q.cocoa], ['Texture', q.texture], ['Finish', q.finish]]
+            .map((n) => ({ label: n[0], value: n[1] })),
+          media: "aspect-ratio: 1; border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 18%, transparent); background: " +
+            (q.img ? "url('" + q.img + "') center 20% / cover no-repeat"
+                   : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)'),
+          price: this.money(s.quickSize === 50 ? q.p50 : q.p100),
+          sizes: [50, 100].map((n) => ({
+            label: n + 'g', style: this.chip(s.quickSize === n), go: () => this.setState({ quickSize: n })
+          })),
+          add: this.add(q.slug, s.quickSize),
+          details: this.quickToProduct(q.slug)
+        };
+      })(),
+      couponOpen: s.couponOpen && s.screen === 'home',
+      couponEyebrow: COUPON.eyebrow, couponHeadline: COUPON.headline,
+      couponHeadlineItalic: COUPON.headlineItalic, couponBody: COUPON.body,
+      couponCode: COUPON.code, couponTerms: COUPON.terms,
+      couponCopyLabel: s.couponCopied ? 'Copied' : 'Copy code',
+      copyCoupon: this.copyCoupon, closeCoupon: this.closeCoupon, couponShop: this.couponShop,
+      couponPanelStyle: 'position: relative; width: min(560px, 100%); text-align: center; padding: clamp(30px, 5vw, 52px) clamp(22px, 4vw, 46px); '
+        + 'background: linear-gradient(165deg, var(--bg3,#2B1B13), var(--bg,#180D09)); '
+        + 'border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 34%, transparent); animation: fadeUp .42s ease both',
+      closeQuick: this.closeQuick,
+      quickGridStyle: 'display: grid; gap: clamp(20px, 3vw, 36px); padding: clamp(22px, 3.4vw, 40px); '
+        + (mob ? 'grid-template-columns: 1fr' : 'grid-template-columns: 0.85fr 1fr; align-items: start'),
       shopProducts: filtered.map(card),
       collectionFilters: ['All'].concat(COLS.map((c) => c.name)).map((n) => ({
         label: n === 'All' ? 'All chocolates' : n, style: this.row(s.collection === n),
