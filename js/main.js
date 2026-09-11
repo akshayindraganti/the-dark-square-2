@@ -150,6 +150,21 @@ function initCart() {
 
 const COUPON_SEEN_KEY = "couponSeen";
 
+/**
+ * Has the visitor dismissed the offer recently enough to stay suppressed?
+ *
+ * The stored value is the timestamp of the dismissal, so the offer comes back
+ * after COUPON.seenDays rather than being gone for good. Anything unparseable
+ * counts as "not seen" — better to show the offer once too often than to
+ * suppress it forever because of a bad value.
+ */
+function couponSuppressed() {
+  const seenAt = read(COUPON_SEEN_KEY, null);
+  if (typeof seenAt !== "number") return false;
+  const days = (Date.now() - seenAt) / 86400000;
+  return days >= 0 && days < COUPON.seenDays;
+}
+
 function initCoupon() {
   const modal = $("#coupon-modal");
   if (!modal) return;
@@ -167,7 +182,7 @@ function initCoupon() {
 
   const close = () => {
     modal.hidden = true;
-    write(COUPON_SEEN_KEY, true);
+    write(COUPON_SEEN_KEY, Date.now());
   };
 
   for (const btn of $$("[data-coupon-close]", modal)) btn.addEventListener("click", close);
@@ -188,9 +203,20 @@ function initCoupon() {
     });
   }
 
-  // Home page only, once per visitor. The original re-armed on every page view
-  // because nothing ever reloaded; persisting `couponSeen` keeps that intent.
-  if (currentPage() !== "home" || read(COUPON_SEEN_KEY, false)) return;
+  // index.html?coupon=1 forces the offer open straight away, so the popup can
+  // be previewed and styled without clearing storage or waiting out the delay;
+  // ?coupon=0 suppresses it for one page view. The modal markup only ships on
+  // the home page, so neither switch does anything elsewhere.
+  const forced = new URLSearchParams(window.location.search).get("coupon");
+  if (forced === "1") {
+    modal.hidden = false;
+    return;
+  }
+  if (forced === "0") return;
+
+  // Otherwise: home page only, once every COUPON.seenDays. The original
+  // re-armed on every page view because nothing ever reloaded.
+  if (currentPage() !== "home" || couponSuppressed()) return;
   setTimeout(() => {
     modal.hidden = false;
   }, COUPON.delayMs);

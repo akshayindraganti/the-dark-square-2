@@ -5,12 +5,13 @@ Static multi-page site for The Dark Square, artisan chocolates.
 ## Getting started
 
 ```bash
-npm run build     # assemble src/pages + components -> index.html, pages/*.html
+npm install       # once — pulls in esbuild, the only dependency
+npm run build     # assemble pages and bundle the JS
 npm run dev       # build, then serve on http://localhost:8080
 ```
 
-There are no dependencies to install — `build.js` uses only the Node standard
-library, and `npm run dev` serves with Python's built-in HTTP server.
+After a build the site also runs by just opening `index.html` in a browser —
+no server needed.
 
 ## Structure
 
@@ -37,18 +38,39 @@ markup with include markers:
 <!-- @include components/header.html -->
 ```
 
-`build.js` replaces each marker with that file's contents, then rewrites
-`./`-relative URLs to `../` for pages that live one directory down.
+and name their page script with:
 
-Why a build step rather than fetching partials at runtime: the site is opened
-straight from disk as well as served, and `fetch()` is blocked on `file://`, so
-runtime injection would silently drop the header and footer.
+```html
+<!-- @script shop -->
+```
+
+`build.js` inlines each include, rewrites `./`-relative URLs to `../` for pages
+one directory down, and bundles `js/main.js` plus the named page module into a
+single classic script in `js/build/`.
+
+Why a build step rather than loading things at runtime: this site is opened
+straight from disk as well as served, and `file://` blocks both `fetch()` and
+`<script type="module">`. Runtime partial injection would silently drop the
+header and footer, and ES modules would not execute at all. Inlining and
+bundling makes the same output work from `file://`, from any static host, and
+in the Claude Design preview alike.
 
 ### Content
 
 Product data and all repeated site copy live in `js/modules/products.js` — the
 nine bars, the four collections, the FAQ, the coupon, the story blocks. Change a
 price or a flavour there and every page follows.
+
+### The welcome coupon
+
+The offer is configured in the `COUPON` object in `js/modules/products.js` —
+code, headline, artwork, `delayMs` (6s after the loader clears) and `seenDays`
+(30 days hidden once dismissed).
+
+It shows on the home page only. To work on it without waiting out the delay or
+clearing storage, open **`index.html?coupon=1`** — that forces it open
+immediately; `?coupon=0` suppresses it for one page view. To reset the
+dismissal, run `localStorage.removeItem('tds:couponSeen')` in the console.
 
 ### CSS
 
@@ -68,5 +90,8 @@ Two breakpoints, inherited from the original design:
 
 `npm run dev`, then check each page: the shop filters, the cart drawer (add,
 quantity, free shipping over ₹1500), quick view, the product size toggle, the
-Lily & Leo treatment switch, the contact form, and the coupon that appears six
-seconds into a first visit to the home page.
+Lily & Leo treatment switch, the contact form, and the coupon (`?coupon=1`).
+
+Check at 1440px, at 1080px and at phone width — those are the two breakpoints
+plus phone. Worth confirming the pages still work opened directly from disk as
+well as served, since `file://` is the stricter of the two.

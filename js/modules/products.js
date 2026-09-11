@@ -91,6 +91,7 @@ const COLS = [
 // ── Welcome coupon popup: edit these to change the offer ──
 const COUPON = {
   delayMs: 6000,                       // appears this long after the loader clears
+  seenDays: 30,                        // hidden for this many days once dismissed
   brand: 'THE DARK SQUARE',
   brandSub: 'ARTISAN CHOCOLATES',
   headline: 'Your first bite is on us!',
