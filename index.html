@@ -9,6 +9,53 @@
     <x-dc>
       <helmet>
         <meta name="ext-resource-dependency" content="assets/hero-splash.mp4" />
+<meta name="ext-resource-dependency" content="assets/bars/p01.avif">
+<meta name="ext-resource-dependency" content="assets/hero-splash-mobile.mp4">
+<meta name="ext-resource-dependency" content="assets/hero-splash-mobile-poster.jpg">
+<meta name="ext-resource-dependency" content="assets/hero-splash-mobile-poster.avif">
+<meta name="ext-resource-dependency" content="assets/hero-splash-mobile-poster.webp">
+<meta name="ext-resource-dependency" content="assets/story/story-hero.jpg">
+<meta name="ext-resource-dependency" content="assets/story/story-hero.avif">
+<meta name="ext-resource-dependency" content="assets/story/story-hero.webp">
+<meta name="ext-resource-dependency" content="assets/story/story-01.jpg">
+<meta name="ext-resource-dependency" content="assets/story/story-01.avif">
+<meta name="ext-resource-dependency" content="assets/story/story-01.webp">
+<meta name="ext-resource-dependency" content="assets/story/story-02.jpg">
+<meta name="ext-resource-dependency" content="assets/story/story-02.avif">
+<meta name="ext-resource-dependency" content="assets/story/story-02.webp">
+<meta name="ext-resource-dependency" content="assets/story/story-03.jpg">
+<meta name="ext-resource-dependency" content="assets/story/story-03.avif">
+<meta name="ext-resource-dependency" content="assets/story/story-03.webp">
+<meta name="ext-resource-dependency" content="assets/coupon-lilyleo.jpg">
+<meta name="ext-resource-dependency" content="assets/coupon-lilyleo.avif">
+<meta name="ext-resource-dependency" content="assets/coupon-lilyleo.webp">
+<meta name="ext-resource-dependency" content="assets/bars/p01.webp">
+<meta name="ext-resource-dependency" content="assets/bars/p02.avif">
+<meta name="ext-resource-dependency" content="assets/bars/p02.webp">
+<meta name="ext-resource-dependency" content="assets/bars/p03.avif">
+<meta name="ext-resource-dependency" content="assets/bars/p03.webp">
+<meta name="ext-resource-dependency" content="assets/bars/p04.avif">
+<meta name="ext-resource-dependency" content="assets/bars/p04.webp">
+<meta name="ext-resource-dependency" content="assets/bars/p05.avif">
+<meta name="ext-resource-dependency" content="assets/bars/p05.webp">
+<meta name="ext-resource-dependency" content="assets/bars/p06.avif">
+<meta name="ext-resource-dependency" content="assets/bars/p06.webp">
+<meta name="ext-resource-dependency" content="assets/bars/p07.avif">
+<meta name="ext-resource-dependency" content="assets/bars/p07.webp">
+<meta name="ext-resource-dependency" content="assets/bars/p08.avif">
+<meta name="ext-resource-dependency" content="assets/bars/p08.webp">
+<meta name="ext-resource-dependency" content="assets/bars/p09.avif">
+<meta name="ext-resource-dependency" content="assets/bars/p09.webp">
+<meta name="ext-resource-dependency" content="assets/hero-splash-poster.avif">
+<meta name="ext-resource-dependency" content="assets/hero-splash-poster.webp">
+<meta name="ext-resource-dependency" content="assets/leo-new.avif">
+<meta name="ext-resource-dependency" content="assets/leo-new.webp">
+<meta name="ext-resource-dependency" content="assets/lily-new.avif">
+<meta name="ext-resource-dependency" content="assets/lily-new.webp">
+<meta name="ext-resource-dependency" content="assets/lilyleo-scene.avif">
+<meta name="ext-resource-dependency" content="assets/lilyleo-scene.webp">
+<meta name="ext-resource-dependency" content="assets/logo.avif">
+<meta name="ext-resource-dependency" content="assets/logo.webp">
         <meta
           name="ext-resource-dependency"
           content="assets/hero-splash-poster.jpg"
@@ -17,7 +64,7 @@
         <meta name="ext-resource-dependency" content="assets/leo-new.png" />
         <meta
           name="ext-resource-dependency"
-          content="assets/lilyleo-scene.png"
+          content="assets/lilyleo-scene.jpg"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -57,8 +104,12 @@
             font-family: inherit;
           }
           ::selection {
-            background: #f3ebdd;
-            color: var(--ink, #f7efe6);
+            background: var(--metal, #d6b98c);
+            color: #180d09;
+          }
+          ::-moz-selection {
+            background: var(--metal, #d6b98c);
+            color: #180d09;
           }
           @keyframes bob {
             0%,
@@ -486,8 +537,8 @@
                 >
                   <video
                     class="hero-splash-video"
-                    src="assets/hero-splash.mp4"
-                    poster="assets/hero-splash-poster.jpg"
+                    src="{{ heroVideoSrc }}"
+                    poster="{{ heroVideoPoster }}"
                     autoplay="true"
                     muted="true"
                     loop="true"
@@ -838,11 +889,15 @@
                     align-items: center;
                   "
                 >
-                  <img
-                    src="assets/lilyleo-scene.jpg"
-                    alt="Lily reading aloud from a glowing book while Leo listens, cocoa farms and a globe drawn in light above them"
-                    style="{{ lilyImgStyle }}"
-                  />
+                  <picture>
+  <source srcset="assets/lilyleo-scene.avif" type="image/avif" />
+  <source srcset="assets/lilyleo-scene.webp" type="image/webp" />
+  <img
+                      src="assets/lilyleo-scene.jpg"
+                      alt="Lily reading aloud from a glowing book while Leo listens, cocoa farms and a globe drawn in light above them"
+                      style="{{ lilyImgStyle }}"
+                    />
+</picture>
                   <div>
                     <p
                       style="
@@ -1741,23 +1796,27 @@
                     <div
                       style="display: flex; gap: 16px; align-items: flex-start"
                     >
-                      <img
-                        src="assets/leo-new.png"
-                        alt="Leo resting his chin on his hands, daydreaming"
-                        style="
-                          width: 74px;
-                          height: 74px;
-                          object-fit: cover;
-                          border-radius: 50%;
-                          flex: none;
-                          border: 1px solid
-                            color-mix(
-                              in srgb,
-                              var(--metal, #d6b98c) 34%,
-                              transparent
-                            );
-                        "
-                      />
+                      <picture>
+  <source srcset="assets/leo-new.avif" type="image/avif" />
+  <source srcset="assets/leo-new.webp" type="image/webp" />
+  <img
+                          src="assets/leo-new.png"
+                          alt="Leo resting his chin on his hands, daydreaming"
+                          style="
+                            width: 74px;
+                            height: 74px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                            flex: none;
+                            border: 1px solid
+                              color-mix(
+                                in srgb,
+                                var(--metal, #d6b98c) 34%,
+                                transparent
+                              );
+                          "
+                        />
+</picture>
                       <div>
                         <p
                           style="
@@ -2419,23 +2478,27 @@
                   hint-placeholder-val="{{ false }}"
                 >
                   <div style="text-align: center; padding: 26px 0">
-                    <img
-                      src="assets/lily-new.png"
-                      alt="Lily reading aloud from a glowing book"
-                      style="
-                        width: 110px;
-                        height: 110px;
-                        object-fit: cover;
-                        border-radius: 50%;
-                        margin: 0 auto 20px;
-                        border: 1px solid
-                          color-mix(
-                            in srgb,
-                            var(--metal, #d6b98c) 34%,
-                            transparent
-                          );
-                      "
-                    />
+                    <picture>
+  <source srcset="assets/lily-new.avif" type="image/avif" />
+  <source srcset="assets/lily-new.webp" type="image/webp" />
+  <img
+                        src="assets/lily-new.png"
+                        alt="Lily reading aloud from a glowing book"
+                        style="
+                          width: 110px;
+                          height: 110px;
+                          object-fit: cover;
+                          border-radius: 50%;
+                          margin: 0 auto 20px;
+                          border: 1px solid
+                            color-mix(
+                              in srgb,
+                              var(--metal, #d6b98c) 34%,
+                              transparent
+                            );
+                        "
+                      />
+</picture>
                     <p
                       style="
                         font-family: &quot;Playfair Display&quot;, serif;
@@ -2876,22 +2939,26 @@
                         And they have a LOT of questions.
                       </p>
                     </div>
-                    <img
-                      src="assets/lilyleo-scene.png"
-                      alt="Lily and Leo in chef's hats and aprons beside the The Dark Square emblem, surrounded by cocoa pods and chocolate"
-                      style="
-                        width: 100%;
-                        max-width: 620px;
-                        justify-self: center;
-                        border-radius: 3px;
-                        border: 1px solid
-                          color-mix(
-                            in srgb,
-                            var(--metal, #d6b98c) 2%,
-                            transparent
-                          );
-                      "
-                    />
+                    <picture>
+  <source srcset="assets/lilyleo-scene.avif" type="image/avif" />
+  <source srcset="assets/lilyleo-scene.webp" type="image/webp" />
+  <img
+                        src="assets/lilyleo-scene.jpg"
+                        alt="Lily and Leo in chef's hats and aprons beside the The Dark Square emblem, surrounded by cocoa pods and chocolate"
+                        style="
+                          width: 100%;
+                          max-width: 620px;
+                          justify-self: center;
+                          border-radius: 3px;
+                          border: 1px solid
+                            color-mix(
+                              in srgb,
+                              var(--metal, #d6b98c) 2%,
+                              transparent
+                            );
+                        "
+                      />
+</picture>
                   </section>
                   <section
                     style="
@@ -3065,6 +3132,8 @@
                 padding: clamp(32px, 5vw, 72px) clamp(16px, 4vw, 40px);
               "
             >
+              <section style="{{ storyHeroGrid }}">
+              <div>
               <p
                 style="
                   font-size: 11px;
@@ -3091,7 +3160,7 @@
                   >with chocolate.</span
                 >
               </h1>
-              <div style="max-width: 58ch; margin: 0 0 clamp(40px, 6vw, 80px)">
+              <div style="max-width: 58ch; margin: 0">
                 <p
                   style="
                     font-size: clamp(16px, 1.4vw, 19px);
@@ -3128,6 +3197,28 @@
                   And then came the second chapter.
                 </p>
               </div>
+              </div>
+              <figure style="margin: 0">
+                <div
+                  style="{{ storyHeroStyle }}"
+                  role="img"
+                  aria-label="Three moments side by side: Lily and Leo filling a chocolate mould, the same kitchen empty and still during the pause, and the two of them back at a finished tray of chocolates"
+                ></div>
+                <figcaption
+                  style="
+                    margin-top: 14px;
+                    text-align: center;
+                    font-family: Caveat, cursive;
+                    font-size: clamp(19px, 2.2vw, 24px);
+                    color: var(--metal2, #d49b84);
+                  "
+                >
+                  Before the pause · the quiet years · and after.
+                </figcaption>
+              </figure>
+              </section>
+
+
               <sc-for
                 list="{{ storyBlocks }}"
                 as="b"
@@ -3146,35 +3237,10 @@
                 >
                   <div style="{{ b.figureStyle }}">
                     <div
-                      style="
-                        aspect-ratio: 4/3;
-                        background: repeating-linear-gradient(
-                          135deg,
-                          var(--bg3, #2b1b13) 0 12px,
-                          var(--bg4, #251710) 12px 24px
-                        );
-                        border: 1px solid
-                          color-mix(
-                            in srgb,
-                            var(--metal, #d6b98c) 16%,
-                            transparent
-                          );
-                        display: flex;
-                        align-items: flex-end;
-                        padding: 14px;
-                      "
-                    >
-                      <span
-                        style="
-                          font-family: ui-monospace, monospace;
-                          font-size: 10px;
-                          letter-spacing: 0.14em;
-                          text-transform: uppercase;
-                          color: var(--metal3, #b7956b);
-                        "
-                        >{{ b.shot }}</span
-                      >
-                    </div>
+                      style="{{ b.tile }}"
+                      role="img"
+                      aria-label="{{ b.alt }}"
+                    ></div>
                   </div>
                   <div style="{{ b.copyStyle }}">
                     <p
@@ -3405,168 +3471,43 @@
               >
                 <span
                   onClick="{{ closeCoupon }}"
-                  style="
-                    position: absolute;
-                    top: 10px;
-                    right: 12px;
-                    cursor: pointer;
-                    width: 40px;
-                    height: 40px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 18px;
-                    color: rgba(247, 239, 230, 0.7);
-                  "
-                  style-hover="color: var(--metal,#D6B98C)"
+                  style="position: absolute; top: 10px; right: 12px; z-index: 3; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #6B4430"
+                  style-hover="color: #2E1A10"
                   role="button"
                   aria-label="Close"
-                  >×</span
+                  >&times;</span
                 >
 
-                <p
-                  style="
-                    font-size: 10px;
-                    letter-spacing: 0.3em;
-                    text-transform: uppercase;
-                    color: var(--metal2, #d49b84);
-                    margin: 0 0 18px;
-                  "
-                >
-                  {{ couponEyebrow }}
-                </p>
-                <p
-                  style="
-                    font-family: &quot;Playfair Display&quot;, serif;
-                    font-weight: 400;
-                    font-size: clamp(26px, 4vw, 38px);
-                    line-height: 1.15;
-                    margin: 0 0 16px;
-                    color: var(--ink, #f7efe6);
-                  "
-                >
-                  {{ couponHeadline }}<br /><span
-                    style="font-style: italic; color: var(--metal, #d6b98c)"
-                    >{{ couponHeadlineItalic }}</span
-                  >
-                </p>
-                <p
-                  style="
-                    max-width: 44ch;
-                    margin: 0 auto 26px;
-                    font-size: 14px;
-                    color: rgba(247, 239, 230, 0.74);
-                    text-wrap: pretty;
-                  "
-                >
-                  {{ couponBody }}
-                </p>
+                <div style="{{ couponCopyStyle }}">
+                  <p style="font-family: 'Playfair Display', serif; font-size: clamp(17px, 2vw, 21px); letter-spacing: .16em; color: #2E1A10; margin: 0 0 6px">{{ couponBrand }}</p>
+                  <p style="font-size: 8px; letter-spacing: .34em; color: #6B4430; margin: 0 0 clamp(20px, 3vw, 32px)">{{ couponBrandSub }}</p>
 
-                <div
-                  style="
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    margin-bottom: 20px;
-                  "
-                >
-                  <span
-                    style="
-                      flex: 1 1 200px;
-                      min-height: 52px;
-                      display: inline-flex;
-                      align-items: center;
-                      justify-content: center;
-                      border: 1px dashed
-                        color-mix(
-                          in srgb,
-                          var(--metal, #d6b98c) 55%,
-                          transparent
-                        );
-                      background: color-mix(
-                        in srgb,
-                        var(--metal, #d6b98c) 8%,
-                        transparent
-                      );
-                      font-family: &quot;Playfair Display&quot;, serif;
-                      font-size: 20px;
-                      letter-spacing: 0.18em;
-                      color: var(--metal, #d6b98c);
-                    "
-                    >{{ couponCode }}</span
-                  >
+                  <p style="font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(28px, 4.2vw, 46px); line-height: 1.08; color: #2E1A10; margin: 0 0 18px; text-wrap: balance">{{ couponHeadline }}</p>
+
+                  <p style="font-size: 11px; letter-spacing: .34em; color: #6B4430; margin: 0 0 4px">{{ couponEnjoy }}</p>
+                  <p style="font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(34px, 5vw, 52px); line-height: 1; letter-spacing: .02em; color: #8B4A2B; margin: 0 0 6px">{{ couponOffer }}</p>
+                  <p style="font-size: 11px; letter-spacing: .26em; color: #4A2C1A; margin: 0 0 clamp(20px, 3vw, 28px)">{{ couponOfferSub }}</p>
+
                   <span
                     onClick="{{ copyCoupon }}"
-                    style="
-                      cursor: pointer;
-                      min-height: 52px;
-                      padding: 0 22px;
-                      display: inline-flex;
-                      align-items: center;
-                      justify-content: center;
-                      border: 1px solid
-                        color-mix(
-                          in srgb,
-                          var(--metal, #d6b98c) 40%,
-                          transparent
-                        );
-                      color: var(--metal, #d6b98c);
-                      font-size: 10px;
-                      letter-spacing: 0.2em;
-                      text-transform: uppercase;
-                    "
-                    style-hover="border-color: var(--metal,#D6B98C); color: var(--ink,#F7EFE6)"
-                    >{{ couponCopyLabel }}</span
+                    style="cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 20px; background: #3F2415; border: 2px solid #8B5A3C; color: #F6E7D6; font-size: 13px; letter-spacing: .16em; margin-bottom: 10px"
+                    style-hover="background: #2E1A10"
+                    >{{ couponCodeLabel }}<b style="font-weight: 700; letter-spacing: .2em; color: #FFF">{{ couponCode }}</b></span
                   >
+                  <p style="margin: 0 0 clamp(18px, 3vw, 26px); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #9A7560">{{ couponCopyHint }}</p>
+
+                  <span
+                    onClick="{{ couponShop }}"
+                    style="cursor: pointer; align-self: center; background: #9A5C36; color: #FFF6EC; font-weight: 700; font-size: 12px; letter-spacing: .2em; min-height: 52px; padding: 0 38px; border-radius: 999px; display: inline-flex; align-items: center; gap: 10px"
+                    style-hover="background: #7C4526"
+                    >{{ couponCta }} <span style="font-size: 15px">&#8594;</span></span
+                  >
+
+                  <p style="margin: clamp(20px, 3vw, 30px) 0 0; font-size: 9px; letter-spacing: .28em; color: #6B4430">{{ couponTagline }}</p>
+                  <p style="margin: 10px 0 0; font-size: 10px; color: #A08571; text-wrap: pretty">{{ couponTerms }}</p>
                 </div>
 
-                <span
-                  onClick="{{ couponShop }}"
-                  style="
-                    cursor: pointer;
-                    width: 100%;
-                    background: var(--metal, #d6b98c);
-                    color: var(--bg, #180d09);
-                    font-weight: 700;
-                    font-size: 11px;
-                    letter-spacing: 0.2em;
-                    text-transform: uppercase;
-                    min-height: 52px;
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 2px;
-                  "
-                  style-hover="background: var(--ink,#F7EFE6)"
-                  >Shop the collection</span
-                >
-                <p
-                  style="
-                    margin: 18px 0 0;
-                    font-size: 11px;
-                    letter-spacing: 0.04em;
-                    color: rgba(247, 239, 230, 0.45);
-                    text-wrap: pretty;
-                  "
-                >
-                  {{ couponTerms }}
-                </p>
-                <span
-                  onClick="{{ closeCoupon }}"
-                  style="
-                    display: inline-block;
-                    margin-top: 14px;
-                    cursor: pointer;
-                    font-size: 11px;
-                    letter-spacing: 0.14em;
-                    text-transform: uppercase;
-                    color: rgba(247, 239, 230, 0.5);
-                  "
-                  style-hover="color: var(--ink,#F7EFE6)"
-                  >No thanks</span
-                >
+                <div style="{{ couponArtStyle }}" role="img" aria-label="Lily and Leo peeking out of a dark chocolate gift box"></div>
               </div>
             </div>
           </sc-if>
@@ -3906,23 +3847,27 @@
                     hint-placeholder-val="{{ true }}"
                   >
                     <div style="padding: 48px 0; text-align: center">
-                      <img
-                        src="assets/leo-new.png"
-                        alt="Leo resting his chin on his hands, daydreaming"
-                        style="
-                          width: 120px;
-                          height: 120px;
-                          object-fit: cover;
-                          border-radius: 50%;
-                          margin: 0 auto 22px;
-                          border: 1px solid
-                            color-mix(
-                              in srgb,
-                              var(--metal, #d6b98c) 34%,
-                              transparent
-                            );
-                        "
-                      />
+                      <picture>
+  <source srcset="assets/leo-new.avif" type="image/avif" />
+  <source srcset="assets/leo-new.webp" type="image/webp" />
+  <img
+                          src="assets/leo-new.png"
+                          alt="Leo resting his chin on his hands, daydreaming"
+                          style="
+                            width: 120px;
+                            height: 120px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                            margin: 0 auto 22px;
+                            border: 1px solid
+                              color-mix(
+                                in srgb,
+                                var(--metal, #d6b98c) 34%,
+                                transparent
+                              );
+                          "
+                        />
+</picture>
                       <p
                         style="
                           font-family: &quot;Playfair Display&quot;, serif;
@@ -4135,7 +4080,7 @@
       data-props='{"characterMotion":{"editor":"boolean","default":true,"tsType":"boolean","section":"Story"},"storyTreatment":{"editor":"enum","options":["Storybook Spread","Midnight Kitchen"],"default":"Storybook Spread","tsType":"string","section":"Story"}}'
     >
       const PRODUCTS = [
-        { slug: 'salted-almond-spell', img: 'assets/bars/p01.png', name: 'Salted Almond Spell',
+        { slug: 'salted-almond-noir', img: 'assets/bars/p01.png', name: 'Salted Almond Noir',
           pair: 'Dark Chocolate • Roasted Almond • Sea Salt', collection: 'The Classics', pct: 70, occasion: 'Everyday',
           p50: 320, p100: 580, cocoa: 'Roasted', texture: 'Nutty', finish: 'Elegant',
           line: 'A little sweet. A little salty. A little magical.',
@@ -4216,13 +4161,20 @@
       ];
 
       // ── Welcome coupon popup: edit these four lines to change the offer ──
+      // ── Welcome coupon popup: edit these to change the offer ──
       const COUPON = {
         delayMs: 6000,                       // appears this long after the loader clears
-        eyebrow: 'A little welcome gift',
-        headline: 'Your first square,',
-        headlineItalic: 'on a sweeter note.',
-        body: 'Take 10% off your first box of handmade squares. Prepared in small batches, tempered by hand, wrapped to be opened slowly.',
-        code: 'FIRSTSQUARE10',
+        brand: 'THE DARK SQUARE',
+        brandSub: 'ARTISAN CHOCOLATES',
+        headline: 'Your first bite is on us!',
+        enjoy: 'ENJOY',
+        offer: '10% OFF',
+        offerSub: 'ON YOUR FIRST ORDER',
+        codeLabel: 'USE CODE:',
+        code: 'SWEETSTART',
+        cta: 'SHOP NOW',
+        tagline: 'EVERY SQUARE HOLDS A STORY.',
+        art: 'assets/coupon-lilyleo.jpg',
         terms: 'Valid on your first order · Minimum ₹500 · One use per customer'
       };
 
@@ -4244,7 +4196,7 @@
       class Component extends DCLogic {
         state = {
           loading: true, pct: 0, menuOpen: false, vw: (typeof window !== 'undefined' ? window.innerWidth : 1200),
-          screen: 'home', slug: 'salted-almond-spell',
+          screen: 'home', slug: 'salted-almond-noir',
           collection: 'All', occasion: 'All',
           size: 100, cartOpen: false, cart: [], lily: null, contactSent: false,
           quick: null, quickSize: 100,
@@ -4318,6 +4270,7 @@
           const motion = (this.props.characterMotion ?? true) ? '; animation: bob 5.5s ease-in-out infinite' : '';
           const T = THEMES.copper;
           const mob = s.vw < 1080;
+          const phone = s.vw < 768;   // portrait hero video below this width
           const lilyMode = s.lily || ((this.props.storyTreatment ?? 'Storybook Spread') === 'Midnight Kitchen' ? 'b' : 'a');
           const product = PRODUCTS.find((p) => p.slug === s.slug) || PRODUCTS[0];
 
@@ -4325,8 +4278,20 @@
             (s.collection === 'All' || p.collection === s.collection) &&
             (s.occasion === 'All' || p.occasion === s.occasion));
 
+          // Serve AVIF -> WebP -> original. `bg()` returns a background shorthand plus an
+          // image-set override; browsers that don't parse image-set keep the plain url().
+          const bg = (src, pos) => {
+            const base = src.replace(/\.(png|jpe?g)$/i, '');
+            const origType = /\.png$/i.test(src) ? 'image/png' : 'image/jpeg';
+            const set = "url('" + base + ".avif') type('image/avif'), "
+                      + "url('" + base + ".webp') type('image/webp'), "
+                      + "url('" + src + "') type('" + origType + "')";
+            return "url('" + src + "') " + pos + " / cover no-repeat"
+                 + '; background-image: -webkit-image-set(' + set + ')'
+                 + '; background-image: image-set(' + set + ')';
+          };
           const tile = (p, extra) => 'aspect-ratio: 1; border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 16%, transparent); background: ' +
-            (p.img ? "url('" + p.img + "') center 20% / cover no-repeat" : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)') + '; ' + (extra || '');
+            (p.img ? bg(p.img, 'center 20%') : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)') + '; ' + (extra || '');
           const card = (p) => ({
             name: p.name, pair: p.pair, priceLabel: 'from ' + this.money(p.p50), quick: this.openQuick(p.slug),
             shot: p.pair, go: this.openProduct(p.slug), add: this.add(p.slug, 100),
@@ -4339,7 +4304,7 @@
             const unit = i.size === 50 ? p.p50 : p.p100;
             return { name: p.name, size: i.size + 'g', qty: i.qty, priceLabel: this.money(unit),
               tile: 'width: 62px; height: 62px; flex: none; border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 16%, transparent); background: ' +
-                (p.img ? "url('" + p.img + "') center 18% / cover no-repeat" : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)'),
+                (p.img ? bg(p.img, 'center 18%') : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)'),
               lineTotal: this.money(unit * i.qty), inc: this.bump(i.key, 1), dec: this.bump(i.key, -1) };
           });
           const subtotal = s.cart.reduce((t, i) => {
@@ -4361,17 +4326,20 @@
             { img: 'assets/leo-new.png', alt: 'Leo lying on a cushion, chin on his hands, listening', caption: 'Leo, chief taster',
               title: 'He is here for the tasting', flip: true,
               body: 'Leo listens to exactly as much of the story as it takes for the chocolate to arrive. He has opinions, and he is right more often than anyone expected.' },
-            { img: 'assets/lilyleo-scene.png', alt: 'Lily reading to Leo, cocoa farms and a globe drawn in light above them', caption: 'Together, one flavour at a time',
+            { img: 'assets/lilyleo-scene.jpg', alt: 'Lily reading to Leo, cocoa farms and a globe drawn in light above them', caption: 'Together, one flavour at a time',
               title: 'Every square is an adventure', flip: false,
               body: 'They discover the world of The Dark Square one chocolate at a time — a new flavour, a new story, and sometimes a little bit of chocolate-covered mischief.' }
           ];
 
           const storyBlocks = [
-            { kicker: 'Why “The Dark Square”', title: 'A small square with a story waiting to be discovered', shot: 'Bar, broken, overhead', flip: false,
+            { kicker: 'Why “The Dark Square”', title: 'A small square with a story waiting to be discovered', flip: false,
+              img: 'assets/story/story-01.jpg', alt: 'Lily and Leo gazing up at a ribbon of chocolate carrying cocoa farms, blossoms and far-off coastlines',
               body: 'Because chocolate begins with the square. Simple. Familiar. Iconic. But inside that little square can be an entire world of flavours, textures, memories and moments.' },
-            { kicker: 'What we believe', title: 'Chocolate should make you pause', shot: 'Hands tempering, warm light', flip: true,
+            { kicker: 'What we believe', title: 'Chocolate should make you pause', flip: true,
+              img: 'assets/story/story-02.jpg', alt: 'Lily and Leo pausing over a plate of dark squares, eyes closed in quiet delight',
               body: 'Good chocolate doesn\u2019t need to shout. It should invite you in. A beautiful flavour. A satisfying texture. A moment of quiet happiness. That\u2019s our idea of indulgence.' },
-            { kicker: 'How we work', title: 'Thoughtful over complicated', shot: 'Ingredient still life — nuts, cocoa, rose', flip: false,
+            { kicker: 'How we work', title: 'Thoughtful over complicated', flip: false,
+              img: 'assets/story/story-03.jpg', alt: 'Lily and Leo finishing a tray of chocolates beside a notebook reading test, refine, perfect, make with care',
               body: 'We don\u2019t make chocolates simply to fill a box. Every flavour begins with an idea. Every recipe is tested. Every piece is crafted with care.' }
           ];
 
@@ -4454,7 +4422,7 @@
             collections: COLS.map((c) => ({
               name: c.name, line: c.line,
               count: PRODUCTS.filter((p) => p.collection === c.name).length + ' chocolates',
-              tile: 'aspect-ratio: 4/5; background: ' + ((PRODUCTS.find((p) => p.collection === c.name && p.img) || {}).img ? "url('" + (PRODUCTS.find((p) => p.collection === c.name && p.img) || {}).img + "') center 20% / cover no-repeat" : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)'),
+              tile: 'aspect-ratio: 4/5; background: ' + ((PRODUCTS.find((p) => p.collection === c.name && p.img) || {}).img ? bg((PRODUCTS.find((p) => p.collection === c.name && p.img) || {}).img, 'center 20%') : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)'),
               go: () => { this.setState({ screen: 'shop', collection: c.name }); window.scrollTo(0, 0); }
             })),
 
@@ -4477,7 +4445,7 @@
                 notes: [['Cocoa', q.cocoa], ['Texture', q.texture], ['Finish', q.finish]]
                   .map((n) => ({ label: n[0], value: n[1] })),
                 media: "aspect-ratio: 1; border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 18%, transparent); background: " +
-                  (q.img ? "url('" + q.img + "') center 20% / cover no-repeat"
+                  (q.img ? bg(q.img, 'center 20%')
                          : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)'),
                 price: this.money(s.quickSize === 50 ? q.p50 : q.p100),
                 sizes: [50, 100].map((n) => ({
@@ -4488,14 +4456,21 @@
               };
             })(),
             couponOpen: s.couponOpen && s.screen === 'home',
-            couponEyebrow: COUPON.eyebrow, couponHeadline: COUPON.headline,
-            couponHeadlineItalic: COUPON.headlineItalic, couponBody: COUPON.body,
-            couponCode: COUPON.code, couponTerms: COUPON.terms,
-            couponCopyLabel: s.couponCopied ? 'Copied' : 'Copy code',
+            couponBrand: COUPON.brand, couponBrandSub: COUPON.brandSub,
+            couponHeadline: COUPON.headline, couponEnjoy: COUPON.enjoy,
+            couponOffer: COUPON.offer, couponOfferSub: COUPON.offerSub,
+            couponCodeLabel: COUPON.codeLabel, couponCode: COUPON.code,
+            couponCta: COUPON.cta, couponTagline: COUPON.tagline, couponTerms: COUPON.terms,
+            couponCopyHint: s.couponCopied ? 'Code copied' : 'Tap the code to copy',
             copyCoupon: this.copyCoupon, closeCoupon: this.closeCoupon, couponShop: this.couponShop,
-            couponPanelStyle: 'position: relative; width: min(560px, 100%); text-align: center; padding: clamp(30px, 5vw, 52px) clamp(22px, 4vw, 46px); '
-              + 'background: linear-gradient(165deg, var(--bg3,#2B1B13), var(--bg,#180D09)); '
-              + 'border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 34%, transparent); animation: fadeUp .42s ease both',
+            couponPanelStyle: 'position: relative; width: min(940px, 100%); max-height: 90vh; overflow: hidden auto; '
+              + 'display: grid; gap: 0; background: #FBF3E8; border-radius: 4px; '
+              + 'box-shadow: 0 40px 120px rgba(8,4,2,.6); animation: fadeUp .42s ease both; '
+              + (mob ? 'grid-template-columns: 1fr' : 'grid-template-columns: 1fr 1fr'),
+            couponCopyStyle: 'padding: ' + (mob ? 'clamp(28px, 6vw, 40px) clamp(22px, 5vw, 36px) 30px' : 'clamp(34px, 4vw, 54px)')
+              + '; display: flex; flex-direction: column; justify-content: center; text-align: center',
+            couponArtStyle: (mob ? 'height: 200px; order: -1; ' : 'min-height: 460px; ')
+              + 'background: ' + bg(COUPON.art, 'center'),
             closeQuick: this.closeQuick,
             quickGridStyle: 'display: grid; gap: clamp(20px, 3vw, 36px); padding: clamp(22px, 3.4vw, 40px); '
               + (mob ? 'grid-template-columns: 1fr' : 'grid-template-columns: 0.85fr 1fr; align-items: start'),
@@ -4517,7 +4492,7 @@
               ? 'padding: clamp(16px, 4vw, 28px)'
               : 'position: sticky; top: 72px; align-self: start; height: fit-content; padding: clamp(16px, 2vw, 28px)',
             productHeroStyle: 'aspect-ratio: 4/5; border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 18%, transparent); display: flex; align-items: flex-end; padding: 18px; background: ' +
-              (product.img ? "url('" + product.img + "') center 20% / cover no-repeat" : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)'),
+              (product.img ? bg(product.img, 'center 20%') : 'repeating-linear-gradient(135deg, var(--bg3,#2B1B13) 0 12px, var(--bg4,#251710) 12px 24px)'),
             tastingNotes: [
               { label: 'Cocoa', value: product.cocoa },
               { label: 'Texture', value: product.texture },
@@ -4545,26 +4520,32 @@
             lilyA: lilyMode === 'a', lilyB: lilyMode === 'b',
             lilySpreads: spreads.map((sp, i) => ({
               alt: sp.alt, caption: sp.caption, title: sp.title, body: sp.body,
-              tile: "width: 100%; height: 100%; background: url('" + sp.img + "') center / cover no-repeat",
+              tile: 'width: 100%; height: 100%; background: ' + bg(sp.img, 'center'),
               wrapStyle: 'background: ' + (i % 2 ? 'rgba(128,89,74,.08)' : 'transparent'),
               figureStyle: 'display: flex; justify-content: center; order: ' + (sp.flip ? 2 : 1),
               copyStyle: 'order: ' + (sp.flip ? 1 : 2)
             })),
             lilyBeats: [
               { num: '01', alt: 'Lily reading aloud from a glowing book', title: 'A question', body: 'Why is dark chocolate dark? Lily has asked four more before anyone answers the first.',
-                tile: "width: 100%; height: 100%; background: url('assets/lily-new.png') center / cover no-repeat" },
+                tile: 'width: 100%; height: 100%; background: ' + bg('assets/lily-new.png', 'center') },
               { num: '02', alt: 'Leo listening, chin resting on his hands', title: 'A taste', body: 'Leo volunteers immediately. He is, he insists, only being helpful.',
-                tile: "width: 100%; height: 100%; background: url('assets/leo-new.png') center / cover no-repeat" },
+                tile: 'width: 100%; height: 100%; background: ' + bg('assets/leo-new.png', 'center') },
               { num: '03', alt: 'Lily and Leo together, cocoa farms drawn in light above them', title: 'A story', body: 'Where the cocoa grew, who grew it, and how it travelled all the way here.',
-                tile: "width: 100%; height: 100%; background: url('assets/lilyleo-scene.png') center / cover no-repeat" },
+                tile: 'width: 100%; height: 100%; background: ' + bg('assets/lilyleo-scene.jpg', 'center') },
               { num: '04', alt: 'Leo daydreaming on a cushion', title: 'A favourite', body: 'They never agree. Their rule: there are no rules when choosing your square.',
-                tile: "width: 100%; height: 100%; background: url('assets/leo-new.png') center / cover no-repeat" }
+                tile: 'width: 100%; height: 100%; background: ' + bg('assets/leo-new.png', 'center') }
             ],
 
             storyBlocks: storyBlocks.map((b) => ({
-              kicker: b.kicker, title: b.title, body: b.body, shot: b.shot,
+              kicker: b.kicker, title: b.title, body: b.body, alt: b.alt,
+              tile: 'aspect-ratio: 4/3; border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 16%, transparent); background: ' + bg(b.img, 'center'),
               figureStyle: 'order: ' + (b.flip ? 2 : 1), copyStyle: 'order: ' + (b.flip ? 1 : 2)
             })),
+            heroVideoSrc: phone ? 'assets/hero-splash-mobile.mp4' : 'assets/hero-splash.mp4',
+            heroVideoPoster: phone ? 'assets/hero-splash-mobile-poster.jpg' : 'assets/hero-splash-poster.jpg',
+            storyHeroGrid: 'display: grid; gap: clamp(28px, 4vw, 56px); align-items: center; margin-bottom: clamp(36px, 5vw, 64px); '
+              + (mob ? 'grid-template-columns: 1fr' : 'grid-template-columns: 1.05fr .95fr'),
+            storyHeroStyle: 'aspect-ratio: 16/9; border: 1px solid color-mix(in srgb, var(--metal,#D6B98C) 20%, transparent); background: ' + bg('assets/story/story-hero.jpg', 'center'),
 
             footerCols: [
               { title: 'Chocolate', links: [['All chocolates', 'shop'], ['The Classics', 'shop'], ['The Dark Collection', 'shop'], ['The Celebration Collection', 'shop']] },
