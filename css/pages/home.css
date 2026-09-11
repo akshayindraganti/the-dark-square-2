@@ -365,7 +365,7 @@
   font-size: 11px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #f3ebdd;
+  color: var(--ink-soft);
   margin: 0 0 18px;
 }
 

@@ -15,6 +15,7 @@
   /* ---- Type ---- */
   --ink: #f5efe5;
   --cream: #ebd8c0;
+  --ink-soft: #f3ebdd; /* header, footer and small-caps labels */
 
   /* ---- Copper accents ---- */
   --metal: #c77a4c;

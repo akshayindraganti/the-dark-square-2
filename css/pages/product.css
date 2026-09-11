@@ -36,12 +36,12 @@
   font-size: 11px;
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
-  color: #f3ebdd;
+  color: var(--ink-soft);
   margin: 0 0 18px;
 }
 
 .pdp__crumbs a {
-  color: #f3ebdd;
+  color: var(--ink-soft);
 }
 
 .pdp__name {
@@ -103,7 +103,7 @@
   font-size: 10px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: #f3ebdd;
+  color: var(--ink-soft);
   margin: 0 0 8px;
 }
 
@@ -181,7 +181,7 @@
   font-size: 10px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: #f3ebdd;
+  color: var(--ink-soft);
   margin: 0 0 10px;
 }
 
@@ -224,7 +224,7 @@
 .buybar__ship {
   margin: 14px 0 0;
   font-size: 12px;
-  color: #f3ebdd;
+  color: var(--ink-soft);
   letter-spacing: 0.08em;
 }
 
@@ -269,7 +269,7 @@
 .pdp__related-price {
   margin: 0;
   font-size: 13px;
-  color: #f3ebdd;
+  color: var(--ink-soft);
 }
 
 /* ---- `mob` breakpoint -------------------------------------------------- */

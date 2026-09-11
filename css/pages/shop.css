@@ -35,7 +35,7 @@
   font-size: 10px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: #f3ebdd;
+  color: var(--ink-soft);
   margin: 0 0 14px;
   padding-bottom: 12px;
   border-bottom: var(--line);
@@ -62,7 +62,7 @@
 .shop__count {
   font-size: 12px;
   letter-spacing: var(--track);
-  color: #f3ebdd;
+  color: var(--ink-soft);
   margin: 0 0 20px;
   text-transform: uppercase;
 }

@@ -98,7 +98,7 @@
   font-size: 16px;
   letter-spacing: var(--track);
   text-transform: uppercase;
-  color: #f3ebdd;
+  color: var(--ink-soft);
   min-height: 44px;
   display: flex;
   align-items: center;
