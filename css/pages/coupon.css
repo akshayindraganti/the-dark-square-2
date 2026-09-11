@@ -13,7 +13,7 @@
   gap: 0;
   grid-template-columns: 1fr 1fr;
   background: #fbf3e8;
-  border-radius: 4px;
+  border-radius: 12px;
   box-shadow: 0 40px 120px rgba(8, 4, 2, 0.6);
   animation: fadeUp 0.42s ease both;
 }
@@ -142,7 +142,7 @@
 .coupon__cta {
   cursor: pointer;
   align-self: center;
-  background: #9a5c36;
+  background: #3f2415;
   color: #fff6ec;
   font-weight: 700;
   font-size: 12px;
@@ -156,7 +156,7 @@
 }
 
 .coupon__cta:hover {
-  background: #7c4526;
+  background: #2e1a10;
   color: #fff6ec;
 }
 
